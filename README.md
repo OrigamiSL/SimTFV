@@ -10,7 +10,7 @@ This is the origin Pytorch implementation of SimTFV in the following paper:
 ## Model Architecture
 
 <p align="center">
-<img src="./img/SimTFV.jpg" height = "480" width = "1550" alt="" align=center />
+<img src="./img/SimTFV.jpg" height = "520" width = "1064" alt="" align=center />
 <br><br>
 <b>Figure 1.</b> The architecture of our proposed SimTFV consists of three main components: (a) RevSTIN operation (right side), which mitigates the impact of
 nonstationarity on the statistical characteristics of the input sequence and fuse the temporal-frequency features. An example that splits the input sequence into
@@ -20,13 +20,13 @@ feature maps in the decoder for producing the prediction results.
 
 
 ## Requirements
-python == 3.11.4
-numpy == 1.24.3
-pandas == 1.5.3
-scipy == 1.11.3
-torch == 2.1.0+cu118
-scikit-learn == 1.4.2
-thop
+- python == 3.11.4
+- numpy == 1.24.3
+- pandas == 1.5.3
+- scipy == 1.11.3
+- torch == 2.1.0+cu118
+- scikit-learn == 1.4.2
+- thop
 
 Dependencies can be installed using the following command:
 ```bash
@@ -69,10 +69,10 @@ Commands for training and testing HST of all datasets are in `./scripts/Main.sh`
 
 More parameter information please refer to `main.py`.
 
-We provide a complete command for training and testing HST:
+We provide a complete command for training and testing SimTFV:
 
 ```
-python -u main.py --data <data> --input_len <input_len> --pred_len <pred_len> --period <period> --encoder_layer <encoder_layer> --layer_stack <layer_stack> --MODWT_level<MODWT_level> --patch_size<patch_size> --ccc_number <ccc_number> --d_model <d_model> --learning_rate <learning_rate> --dropout <dropout> --batch_size <batch_size> --train_epochs <train_epochs> --itr <itr> --train --patience <patience> --decay<decay>
+python -u main.py --data <data> --long_input_len <long_input_len>  --short_input_len <short_input_len> --pred_len <pred_len> --encoder_layers <encoder_layers> --decoder_layers <decoder_layers> --patch_size <patch_size> --d_model <d_model> --decoder_IN --learning_rate <learning_rate> --dropout <dropout> --batch_size <batch_size> --train_epochs <train_epochs> --itr <itr>  --train --patience <patience> --decay <decay>
 ```
 
 Here we provide a more detailed and complete command description for training and testing the model:
@@ -83,17 +83,17 @@ Here we provide a more detailed and complete command description for training an
 |   root_path    |                                       The root path of the data file                                       |
 |   data_path    |                                             The data file name                                             |
 |  checkpoints   |                                       Location of model checkpoints                                        |
-|   input_len    |                                           Input sequence length                                            |
-|    pred_len    |                                         Prediction sequence length                                         |
-|    period    |                                         Vested periods for global timestamps                                         |
+|   long_input_len    |                                           Input length                                            |
+|    short_input_len    |                                         Input length                                         |
+|    pred_len   |                                        Prediction length                                    |
 |     enc_in     |                                                 Input variable number                                                |
 |    dec_out     |                                                Output variable number                                             |
 |    d_model     |                                             Hidden dims of model                                             |
-|  encoder_layer |                                            The number of stages                                            |
-|   layer_stack  |                                       The number of layers per stage                                       |
-|   patch_size   |                                The initial patch size in patch-wise attention                              |
-|  MODWT_level   |                                           The level of MODWT/MRA                                           |
-|  ccc_num  |                                           Number of correlated variables                                           |
+|  encoder_layers |                                           The num of layers in each encoder stage                                          |
+|   decoder_layers  |                                      The num of layers in each decoder stage                                   |
+|   patch_size   |                                The initial patch size in patch-wise attention                            |
+|  Not_use_CV  |                                          Whether not to adopt the cross-variable attention in TVA                                       |
+|  decoder_IN |                                           Whether to use decoder_IN                                        |
 |    dropout     |                                                  Dropout                                                   |
 |    num_workers     |                                                  Data loader num workers                                                   |
 |      itr       |                                             Experiments times                                              |
@@ -108,7 +108,7 @@ Here we provide a more detailed and complete command description for training an
 The experiment parameters of each dataset are formated in the `Main.sh` files in the directory `./scripts/`. You can refer to these parameters for experiments, and you can also adjust the parameters to obtain better mse results or draw better prediction figures. We present the multivariate forecasting results of the four datasets in Figure 2.
 
 <p align="center">
-<img src="./img/HST_result.jpg" height = "300" alt="" align=center />
+<img src="./img/results.jpg" height = "269" weight = "1036" alt="" align=center />
 <br><br>
 <b>Figure 2.</b> Multivariate forecasting results.
 </p>
