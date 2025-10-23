@@ -65,7 +65,7 @@ The folder tree in https://drive.google.com/drive/folders/1ZOYpTUa82_jCcxIdTmyr0
 To standardize the data format, we convert the data file of [Solar](https://drive.google.com/drive/folders/12ffxwxVAGM_MQiYpIk9aBLQrb2xQupT-) from 'solar_AL.txt' to 'solar_AL.csv'. We place the processed file into the folder `./data/Solar`. For convenience, we processed the Wind and Hydro datasets and you can obtain the processed files at `./data/Wind/Wind.csv` and `./data/Hydro_BXX/Hydro_BXX.csv`, respectively.
 
 ## Usage
-Commands for training and testing HST of all datasets are in `./scripts/Main.sh`. 
+Commands for training and testing SimTFV of all datasets are in `./scripts/Main.sh`. 
 
 More parameter information please refer to `main.py`.
 
@@ -108,7 +108,7 @@ Here we provide a more detailed and complete command description for training an
 The experiment parameters of each dataset are formated in the `Main.sh` files in the directory `./scripts/`. You can refer to these parameters for experiments, and you can also adjust the parameters to obtain better mse results or draw better prediction figures. We present the multivariate forecasting results of the four datasets in Figure 2.
 
 <p align="center">
-<img src="./img/results.jpg" height = "269" weight = "1036" alt="" align=center />
+<img src="./img/Results.jpg" height = "269" weight = "1036" alt="" align=center />
 <br><br>
 <b>Figure 2.</b> Multivariate forecasting results.
 </p>
