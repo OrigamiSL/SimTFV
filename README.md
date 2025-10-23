@@ -20,16 +20,13 @@ feature maps in the decoder for producing the prediction results.
 
 
 ## Requirements
-- python == 3.11.4
-- numpy == 1.24.3
-- pandas == 1.5.3
-- scipy == 1.11.3
-- torch == 2.1.0+cu118
-- scikit-learn == 1.3.0
-- PyWavelets == 1.4.1
-- astropy == 6.1
-- h5py == 3.7.0
-- geomstat == 2.5.0
+python == 3.11.4
+numpy == 1.24.3
+pandas == 1.5.3
+scipy == 1.11.3
+torch == 2.1.0+cu118
+scikit-learn == 1.4.2
+thop
 
 Dependencies can be installed using the following command:
 ```bash
